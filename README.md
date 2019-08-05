@@ -1,4 +1,6 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Excursions Frontend
+
+Master Branch: [![Build Status](https://travis-ci.org/beard-crosby/excursions-frontend.svg?branch=master)](https://travis-ci.org/beard-crosby/excursions-frontend)
 
 ## Available Scripts
 
