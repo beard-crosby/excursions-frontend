@@ -9,7 +9,5 @@ cache:
   npm: true
   directories:
     - ~/.cache
-install:
-  - npm ci
 script:
   - npm run test
