@@ -4,7 +4,7 @@ import { SidebarLayout as Layout } from '../../components/Layout'
 const Dashboard = () => {
 
     return (
-        <Layout>
+        <Layout sidebar>
             <p>Dashboard</p>
         </Layout>
     )
