@@ -16,9 +16,11 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "format": "prettier --write src/**/*.{js,jsx}"
+    "format": "prettier --write src/**/*.{js,jsx}",
+    "cy:open": "cypress open",
+    "cy:run": "cypress run",
+    "test": "start-server-and-test start http://localhost:3000 cy:run"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -36,6 +38,8 @@
     ]
   },
   "devDependencies": {
-    "prettier": "^1.18.2"
+    "cypress": "^3.4.1",
+    "prettier": "^1.18.2",
+    "start-server-and-test": "^1.9.2"
   }
 }
