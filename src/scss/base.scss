@@ -1,8 +1,26 @@
-@import url('https://fonts.googleapis.com/css?family=Montserrat:400,600,700');
-
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,600,700");
 
 $enable-border-radius: false;
 $spacer: 1.8em;
 
+body {
+    // display: flex;
+    // flex-direction: column;
+    // justify-content: space-between;
+    // align-items: flex-end;
+    min-height: 100vh;
 
-@import '~bootstrap/scss/bootstrap';
+    #root {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        min-height: 100vh;
+    }
+
+    .super-container {
+        width: 100vw;
+        height: auto;
+    }
+}
+
+@import "~bootstrap/scss/bootstrap";

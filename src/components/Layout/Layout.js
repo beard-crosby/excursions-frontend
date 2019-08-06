@@ -7,7 +7,7 @@ const Layout = ({ sidebar, fluid, children }) => {
     return sidebar ? (
         <Container fluid={fluid}>
             <Row>
-                <Col md="3" lg="2" className="sidebar pb-3">
+                <Col md="3" lg="2" className="sidebar py-3">
                     <Sidebar />
                 </Col>
                 <Col md="9" lg="10" className="p-3">

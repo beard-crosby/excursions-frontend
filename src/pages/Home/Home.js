@@ -34,7 +34,6 @@ const Home = () => {
     return isLoading ? <p>Loading</p> : (
         <>
         <p>{data.userName}</p>
-        <Link to="/dashboard">Dashboard</Link>
         </>
     )
 }
