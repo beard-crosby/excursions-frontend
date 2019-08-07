@@ -1,13 +1,14 @@
 import React from "react"
+import { connect } from "react-redux"
 import PropTypes from "prop-types"
 import { Route, Redirect } from "react-router-dom"
 
-const PrivateRoute = props => {
-    //if (props.token) { 
+const PrivateRoute = (props, { state }) => {
+    if (state.token) { 
         return <Route {...props} />
-    // } else {
-    //     return <Redirect to="/login" />
-    // }
+    } else {
+        return <Redirect to="/login" />
+    }
 }
 
 PrivateRoute.propTypes = {
@@ -23,4 +24,8 @@ PrivateRoute.defaultProps = {
     exact: true,
 }
 
-export default PrivateRoute
+export default connect(state => ({
+    state: {
+        token: state.token
+    },
+}))(PrivateRoute)

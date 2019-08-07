@@ -1,4 +1,5 @@
 import React from "react"
+import { connect } from "react-redux"
 import {
     Container,
     Collapse,
@@ -13,21 +14,25 @@ const Navigation = ({ state, dispatch }) =>
         <Navbar color="light" light expand="md">
             <Container>
                 <Link to="/" className={`mono, nav-link`}><h5>Excursions</h5></Link>
-                <NavbarToggler onClick={dispatch} />
-                <Collapse isOpen={dispatch} navbar>
+                {/* <NavbarToggler onClick={dispatch} />
+                <Collapse isOpen={dispatch} navbar> */}
                     <Nav className="ml-auto" navbar>
-                    {//state.token ?
+                    {state.token ?
                         <>
                             <NavLink to="/dashboard" className="nav-link">Dashboard</NavLink>
                             <Link to="/" className="nav-link">Log Out</Link>
                         </>
-                        // :
-                        // <NavLink to="/dashboard" className="nav-link">Log In</NavLink>
+                        :
+                        <NavLink to="/dashboard" className="nav-link">Log In</NavLink>
                     }
                     </Nav>
-                </Collapse>
+                {/* </Collapse> */}
             </Container>
         </Navbar>
     </>
 
-export default Navigation
+export default connect(state => ({
+    state: {
+        token: state.token
+    },
+}))(Navigation)

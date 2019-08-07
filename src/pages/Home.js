@@ -1,4 +1,5 @@
 import React, { useEffect } from "react"
+import { connect } from "react-redux"
 import Spinner from '../components/UI/Spinner/Spinner'
 
 const Home = ({ state, dispatch }) => {
@@ -8,8 +9,12 @@ const Home = ({ state, dispatch }) => {
     }, [])
 
     return (
-        !"state.loading" ? <Spinner /> : <p>{"state.userName"}</p>
+        state.loading ? <Spinner /> : <p>{state.userName}</p>
     )
 }
 
-export default Home
+export default connect(state => ({
+    state: {
+        loading: state.loading
+    },
+}))(Home)

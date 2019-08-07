@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react'
+import { connect } from 'react-redux'
 import Spinner from '../components/UI/Spinner/Spinner'
 
 const Dashboard = ({ state, dispatch }) => {
@@ -8,8 +9,12 @@ const Dashboard = ({ state, dispatch }) => {
     }, [])
 
     return (
-        !"state.loading" ? <Spinner /> : <h1>Dashboard</h1>
+        state.loading ? <Spinner /> : <h1>Dashboard</h1>
     )
 }
 
-export default Dashboard
+export default connect(state => ({
+    state: {
+        loading: state.loading
+    },
+}))(Dashboard)
