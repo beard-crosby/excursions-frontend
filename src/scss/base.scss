@@ -17,6 +17,23 @@ body {
         width: 100vw;
         height: auto;
     }
+
+    a {
+        cursor: pointer;
+    }
+
+    .nav-link {
+        color: #7b7c7d;
+
+        h5 {
+            margin: 0;
+        }
+
+        &:hover,
+        &:active {
+            color: #333333;
+        }
+    }
 }
 
 @import "~bootstrap/scss/bootstrap";
