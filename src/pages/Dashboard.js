@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
-import Layout from '../../components/Layout'
 import axios from "axios"
-import Loading from '../../components/Loading'
+import Layout from '../components/Layout/Layout'
+import Spinner from '../components/UI/Spinner/Spinner'
 
 const Dashboard = () => {
     const [isLoading, setLoading] = useState(false)
@@ -32,7 +32,7 @@ const Dashboard = () => {
             setLoading(false)
     }, [])
 
-    return isLoading ? <Loading sidebar /> : (
+    return isLoading ? <Spinner /> : (
         <Layout sidebar>
             <h1>Dashboard</h1>
             <p>{data.useName}</p>

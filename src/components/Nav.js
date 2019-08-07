@@ -10,7 +10,7 @@ import {
     NavLink,
 } from "reactstrap"
 import { Link } from 'react-router-dom'
-import { UserContext } from "../../App"
+import { UserContext } from "../App"
 
 const Navigation = () => {
     const [isOpen, setOpen] = useState(false)

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react"
 import Router from './Router'
 import Nav from './components/Nav'
 import Footer from './components/Footer'
-import Loading from './components/Loading'
+import Spinner from './components/UI/Spinner/Spinner'
 
 const UserContext = React.createContext()
 
@@ -24,7 +24,7 @@ function App() {
         }
     }, [isLogged])
 
-    return isLoading ? <Loading /> : (
+    return isLoading ? <Spinner /> : (
         <UserContext.Provider value={{ isLogged, updateLogged }}>
             <Nav />
             <div className="super-container">
