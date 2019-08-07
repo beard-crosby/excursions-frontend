@@ -1,7 +1,11 @@
 import * as actionTypes from './actionTypes'
 import axios from 'axios'
 
-const loading = () => { type: actionTypes.LOADING } // Do nothing but send LOADING to the reducer when called.
+const loading = () => { // Do nothing but send LOADING to the reducer when called.
+    return {
+        type: actionTypes.LOADING
+    } 
+}
 
 const requestFail = err => { // If signUp fails send REQUEST_FAIL with error to the reducer.
     return {
@@ -42,7 +46,7 @@ export const signUp = userData => { // Receive userData and make a request to th
                 }
             `
         }).then(res => res.data.errors ?
-            dispatch(actionCreators.requestFail(res.data.errors[0].message)) : // If there's an error, call requestFail and send error data.
+            dispatch(requestFail(res.data.errors[0].message)) : // If there's an error, call requestFail and send error data.
             dispatch(authSuccess(res.data.data.signUp))) // If we succeed, call authSuccess and send the userData.
     }
 }
