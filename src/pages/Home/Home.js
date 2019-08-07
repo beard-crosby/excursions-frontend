@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react"
-import { Link } from 'react-router-dom'
 import axios from "axios"
 
 const Home = () => {
@@ -12,7 +11,7 @@ const Home = () => {
             .post(`${process.env.REACT_APP_BASE_API_ROUTE}/graphql`, {
                 query: `
                 mutation {
-                    sign_up(userInput: {email: "samisgay", password: "asnrg34", userName: "mamamamfjfjfj"}) {
+                    sign_up(userInput: {password: "asnrg34", userName: "mamamamfjfjfj"}) {
                     userName
                     token
                     tokenExpiry
