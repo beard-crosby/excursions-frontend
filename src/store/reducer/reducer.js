@@ -24,6 +24,7 @@ const authSuccess = userData => {
     },
     token: userData.token,
     tokenExpiry: userData.tokenExpiry,
+    loading: false,
   }
 }
 
@@ -33,7 +34,7 @@ const authSuccess = userData => {
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.LOADING: return updateState(state, { loading: true }) // Change loading to true.
-    case actionTypes.REQUEST_FAIL: return updateState(state, { error: action.error }) // If there's an error, get the value for the error key and put it in state.
+    case actionTypes.REQUEST_FAIL: return updateState(state, { error: action.error, loading: false }) // If there's an error, get the value for the error key and put it in state.
     case actionTypes.AUTH_SUCCESS: return updateState(state, authSuccess(action.userData)) // With our helper function we can return a function that returns an object with all of our changes.
     default: return state
   }
