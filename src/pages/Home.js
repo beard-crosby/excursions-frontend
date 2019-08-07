@@ -8,7 +8,10 @@ const Home = ({ state, dispatch }) => {
     const onSignUp = event => {
         event.preventDefault()
         const userData = {
-
+            email: "test@test.com",
+            userName: "test123",
+            fullName: "test testy",
+            password: "tesiness123"
         }
         dispatch(actionCreators.signUp(userData)) // call the actionCreator signUp and pass what will be formData with user input.
     }
