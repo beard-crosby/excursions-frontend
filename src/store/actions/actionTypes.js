@@ -7,4 +7,4 @@ export const LOADING = 'LOADING'
 
 // auth
 export const REQUEST_FAIL = 'REQUEST_FAIL'
-export const SIGN_UP_SUCCESS = 'SIGN_UP_SUCCESS'
+export const AUTH_SUCCESS = 'AUTH_SUCCESS'
