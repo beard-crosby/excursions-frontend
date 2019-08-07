@@ -9,7 +9,7 @@ const Error = ({ sidebar, message }) => {
                 style={{ height: "100%", flexDirection: "column" }}
                 className="d-flex justify-content-center align-items-center"
             >
-                <h1 className="text-danger">An Error Occured</h1>
+                <h1 className="text-danger">An Error Occurred</h1>
                 <h2>{message}</h2>
             </div>
         </Layout>
@@ -25,7 +25,7 @@ Error.propTypes = {
 
 Error.defaultProps = {
     sidebar: false,
-    message: "An error has occured.",
+    message: "An error has occurred.",
 }
 
 export default Error
