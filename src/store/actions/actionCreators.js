@@ -19,6 +19,7 @@ const authSuccess = userData => { // If signUp succeeds send AUTH-SUCCESS with u
 
 export const signUp = userData => { // Receive userData and make a request to the backend.
     return dispatch => {
+        dispatch(loading()) // call loading
         axios.post('', {
             variables: {
                 email: userData.email,
