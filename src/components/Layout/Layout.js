@@ -16,7 +16,9 @@ const Layout = ({ sidebar, fluid, children }) => {
             </Row>
         </Container>
     ) : (
-        <Container fluid={fluid}>{children}</Container>
+        <Container fluid={fluid}>
+            {children}
+        </Container>
     )
 }
 
