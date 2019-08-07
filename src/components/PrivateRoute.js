@@ -1,16 +1,13 @@
-import React, { useContext } from "react"
+import React from "react"
 import PropTypes from "prop-types"
 import { Route, Redirect } from "react-router-dom"
-import { UserContext } from "../App"
 
-const PrivateRoute = ({ ...props }) => {
-    const { isLogged } = useContext(UserContext)
-
-    if (isLogged) {
+const PrivateRoute = props => {
+    //if (props.token) { 
         return <Route {...props} />
-    }
-
-    return <Redirect to="/login" />
+    // } else {
+    //     return <Redirect to="/login" />
+    // }
 }
 
 PrivateRoute.propTypes = {

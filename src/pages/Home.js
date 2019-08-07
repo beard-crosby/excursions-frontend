@@ -1,39 +1,14 @@
-import React, { useState, useEffect } from "react"
-import axios from "axios"
+import React, { useEffect } from "react"
+import Spinner from '../components/UI/Spinner/Spinner'
 
-const Home = () => {
-    const [isLoading, setLoading] = useState(false)
-    const [data, setData] = useState({})
+const Home = ({ state, dispatch }) => {
 
     useEffect(() => {
-        setLoading(true)
-        axios
-            .post(`${process.env.REACT_APP_BASE_API_ROUTE}/graphql`, {
-                query: `
-                mutation {
-                    sign_up(userInput: {password: "asnrg34", userName: "mamamamfjfjfj"}) {
-                    userName
-                    token
-                    tokenExpiry
-                }
-            }
-            `,
-            })
-            .then(res => {
-                console.log(res)
-                return res.data.data.sign_up
-            })
-            .then(json => {
-                setData(json)
-                console.log(json.token)
-            })
-            setLoading(false)
+        // we send our requests here via 'dispatch'
     }, [])
 
-    return isLoading ? <p>Loading</p> : (
-        <>
-        <p>{data.userName}</p>
-        </>
+    return (
+        !"state.loading" ? <Spinner /> : <p>{"state.userName"}</p>
     )
 }
 
