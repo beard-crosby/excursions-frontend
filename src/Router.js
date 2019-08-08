@@ -13,7 +13,7 @@ const Router = () => {
     return (
         <Switch>
             {isLogged ? (
-                <PrivateRoute exact path="/dashboard" component={Dashboard} />
+                <PrivateRoute exact path="/" component={Dashboard} />
             ) : (
                 <Route exact path="/" component={Home} />
             )}
