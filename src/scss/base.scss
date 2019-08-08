@@ -1,5 +1,19 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat:400,600,700");
 
+// Colours
+$color-1: #464647;
+$color-2: #096625;
+$black: #333333;
+$white: #f1f1f1;
+$pure-white: #ffffff;
+
+$theme-colors: (
+    "primary": $color-1,
+    "secondary": $color-2,
+    "dark": $black,
+    "white": $white,
+);
+
 $enable-border-radius: false;
 $spacer: 1.8em;
 
@@ -16,6 +30,19 @@ body {
     .super-container {
         width: 100vw;
         height: auto;
+    }
+
+    a {
+        cursor: pointer;
+    }
+
+    .nav-link {
+        color: "primary";
+
+        &:hover,
+        &:active {
+            color: "dark";
+        }
     }
 }
 

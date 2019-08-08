@@ -4,13 +4,11 @@ import {
     Collapse,
     Navbar,
     NavbarToggler,
-    NavbarBrand,
     Nav,
-    NavItem,
-    NavLink,
+    NavItem
 } from "reactstrap"
-import { Link } from 'react-router-dom'
-import { UserContext } from "../../App"
+import { Link, NavLink } from 'react-router-dom'
+import { UserContext } from "../App"
 
 const Navigation = () => {
     const [isOpen, setOpen] = useState(false)
@@ -36,9 +34,7 @@ const Navigation = () => {
         <div>
             <Navbar color="light" light expand="md">
                 <Container>
-                    <NavbarBrand href="/" className="mono">
-                        Excursions
-                    </NavbarBrand>
+                    <Link to="/" className={`mono nav-link`}><h5 className="m-0">Excursions</h5></Link>
                     <NavbarToggler onClick={toggleOpen} />
                     <Collapse isOpen={isOpen} navbar>
                         <Nav className="ml-auto" navbar>
@@ -56,10 +52,10 @@ export default Navigation
 const LoggedMenu = ({ handleLogout }) => (
     <>
         <NavItem>
-            <Link className="nav-link" to="/">Dashboard</Link>
+            <NavLink to="/dashboard" className="nav-link">Dashboard</NavLink>
         </NavItem>
         <NavItem>
-            <NavLink onClick={() => handleLogout()} href="#">Log Out</NavLink>
+            <Link to="/" className="nav-link" onClick={() => handleLogout()}>Log Out</Link>
         </NavItem>
     </>
 )
@@ -67,7 +63,7 @@ const LoggedMenu = ({ handleLogout }) => (
 const NotLoggedMenu = ({ tempLogin }) => (
     <>
         <NavItem>
-            <NavLink onClick={() => tempLogin()} href="#">Log In</NavLink>
+            <NavLink to="/dashboard" className="nav-link" onClick={() => tempLogin()}>Log In</NavLink>
         </NavItem>
     </>
 )
