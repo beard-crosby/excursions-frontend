@@ -3,8 +3,8 @@ import { connect } from "react-redux"
 import PropTypes from "prop-types"
 import { Route, Redirect } from "react-router-dom"
 
-const PrivateRoute = (props, { state }) => {
-    if (state.token) { 
+const PrivateRoute = props => {
+    if (props.state.token) { 
         return <Route {...props} />
     } else {
         return <Redirect to="/login" />
@@ -17,7 +17,7 @@ PrivateRoute.propTypes = {
     /** Passed for react-router-dom */
     path: PropTypes.string.isRequired,
     /** Component that the route links to. Passed for react-router-dom */
-    component: PropTypes.func,
+    component: PropTypes.object,
 }
 
 PrivateRoute.defaultProps = {
