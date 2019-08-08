@@ -1,11 +1,7 @@
 import React from 'react'
 import * as classes from './Spinner.module.scss'
-import Layout from '../../Layout/Layout'
 
-const Spinner = () => 
-    <Layout>
-        <div className={classes.loader}>Loading...</div>
-    </Layout>
+const Spinner = () => <div className={classes.loader}>Loading...</div>
 
 export default Spinner
 
