@@ -4,7 +4,7 @@ import PropTypes from "prop-types"
 import { Route, Redirect } from "react-router-dom"
 
 const PrivateRoute = props => {
-    if (props.state.token) { 
+    if (props.state.token) {
         return <Route {...props} />
     } else {
         return <Redirect to="/login" />
@@ -26,6 +26,6 @@ PrivateRoute.defaultProps = {
 
 export default connect(state => ({
     state: {
-        token: state.token
+        token: state.token,
     },
 }))(PrivateRoute)
