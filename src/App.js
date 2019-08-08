@@ -1,10 +1,13 @@
 import React from "react"
 import Router from './Router'
-import Layout from "./components/Layout/Layout"
+import Nav from './components/Nav'
+import Footer from './components/Footer'
 
-const App = props => 
-    <Layout>
+const App = props =>
+    <>
+        <Nav />
         <Router />
-    </Layout>
+        <Footer />
+    </>
 
 export default App

@@ -1,17 +1,21 @@
-import React from "react"
+import React, { useState } from "react"
 import { connect } from "react-redux"
 import { Container, Collapse, Navbar, NavbarToggler, Nav } from "reactstrap"
 import { Link, NavLink } from "react-router-dom"
 
-const Navigation = ({ state, dispatch }) => (
+const Navigation = ({ state, dispatch }) => {
+    const [isOpen, setOpen] = useState(false)
+    const toggleOpen = () => setOpen(!isOpen)
+
+    return (
     <>
         <Navbar color="light" light expand="md">
             <Container>
                 <Link to="/" className={`mono, nav-link`}>
                     <h5 className="m-0">Excursions</h5>
                 </Link>
-                {/* <NavbarToggler onClick={dispatch} />
-                <Collapse isOpen={dispatch} navbar> */}
+                <NavbarToggler onClick={toggleOpen} />
+                <Collapse isOpen={isOpen} navbar>
                 <Nav className="ml-auto" navbar>
                     {state.token ? (
                         <>
@@ -28,11 +32,12 @@ const Navigation = ({ state, dispatch }) => (
                         </NavLink>
                     )}
                 </Nav>
-                {/* </Collapse> */}
+                </Collapse>
             </Container>
         </Navbar>
     </>
-)
+    )
+}
 
 export default connect(state => ({
     state: {

@@ -2,6 +2,7 @@ import React, { useEffect } from "react"
 import { connect } from "react-redux"
 import Spinner from "../components/UI/Spinner/Spinner"
 import * as actionCreators from "../store/actions/actionCreators"
+import Layout from '../components/Layout'
 
 const Home = ({ state, dispatch }) => {
     const onSignUp = event => {
@@ -19,7 +20,11 @@ const Home = ({ state, dispatch }) => {
         // onSignUp()
     }, [])
 
-    return state.loading ? <Spinner /> : <p>HOMEPAGE</p>
+    return (
+        <Layout>
+            {state.loading ? <Spinner /> : <p>HOMEPAGE</p>}
+        </Layout>
+    )
 }
 
 export default connect(state => ({
