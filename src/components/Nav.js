@@ -34,7 +34,7 @@ const Navigation = () => {
         <div>
             <Navbar color="light" light expand="md">
                 <Container>
-                    <Link to="/" className={`mono, nav-link`}><h5>Excursions</h5></Link>
+                    <Link to="/" className={`mono nav-link`}><h5 className="m-0">Excursions</h5></Link>
                     <NavbarToggler onClick={toggleOpen} />
                     <Collapse isOpen={isOpen} navbar>
                         <Nav className="ml-auto" navbar>

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from "axios"
 import Layout from '../components/Layout/Layout'
-import Spinner from '../components/UI/Spinner/Spinner'
+import Spinner from '../components/UI/Spinner'
 
 const Dashboard = () => {
     const [isLoading, setLoading] = useState(false)
