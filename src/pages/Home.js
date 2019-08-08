@@ -8,8 +8,8 @@ const Home = ({ state, dispatch }) => {
     const onSignUp = event => {
         //event.preventDefault()
         const userData = {
-            email: "test@wtestness.com",
-            userName: "testw1234",
+            email: "test@wteswtness.com",
+            userName: "testww1234",
             fullName: "test testy",
             password: "tesiness123"
         }
@@ -21,7 +21,7 @@ const Home = ({ state, dispatch }) => {
     }, [])
 
     return (
-        state.loading ? <Spinner /> : <p>{state.userName}</p>
+        state.loading ? <Spinner /> : <p>HOMEPAGE</p>
     )
 }
 

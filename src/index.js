@@ -2,6 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Provider } from "react-redux"
 import { createStore, applyMiddleware, compose } from 'redux'
+import { composeWithDevTools } from 'redux-devtools-extension'
 import thunk from 'redux-thunk'
 import axios from 'axios'
 import './scss/base.scss'
@@ -27,9 +28,8 @@ let actionLogger = store => {
 
 // Only use Redux Middleware and Chrome Redux Dev tools while in development.
 const dev = process.env.NODE_ENV === 'development'
-const composeEnhancers = dev ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ : null || compose
-const store = dev ? createStore(reducer, composeEnhancers(applyMiddleware(actionLogger, thunk)))
-: createStore(reducer, composeEnhancers(applyMiddleware(thunk)))
+const store = dev ? createStore(reducer, composeWithDevTools(applyMiddleware(actionLogger, thunk)))
+: createStore(reducer, composeWithDevTools(applyMiddleware(thunk)))
 
 ReactDOM.render(
     <Provider store={store}>
