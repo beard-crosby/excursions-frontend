@@ -8,8 +8,8 @@ const Home = ({ state, dispatch }) => {
     const onSignUp = event => {
         //event.preventDefault()
         const userData = {
-            email: "test@wteswtness.com",
-            userName: "testww1234",
+            email: "test@wsteswtness.com",
+            userName: "testsww1234",
             fullName: "test testy",
             password: "tesiness123",
         }
@@ -17,7 +17,7 @@ const Home = ({ state, dispatch }) => {
     }
 
     useEffect(() => { // Just a to test the request.
-        // onSignUp()
+        // onSignUp() // Uncomment me and refresh to make a request
     }, [])
 
     return (

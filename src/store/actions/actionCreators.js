@@ -1,27 +1,31 @@
 import * as actionTypes from './actionTypes'
 import axios from 'axios'
 
-const loading = () => { // Do nothing but send LOADING to the reducer when called.
+// Do nothing but send LOADING to the reducer when called.
+const loading = () => { 
     return {
         type: actionTypes.LOADING
     } 
 }
 
-const requestFail = err => { // If signUp fails send REQUEST_FAIL with error to the reducer.
+// If signUp fails send REQUEST_FAIL with error to the reducer.
+const requestFail = err => {
     return {
         type: actionTypes.REQUEST_FAIL,
         error: err
     }
 }
 
-const authSuccess = userData => { // If signUp succeeds send AUTH-SUCCESS with userData to the reducer.
+// If signUp succeeds send AUTH-SUCCESS with userData to the reducer.
+const authSuccess = userData => {
     return {
         type: actionTypes.AUTH_SUCCESS,
         userData: userData
     }
 }
 
-export const signUp = userData => { // Receive userData and make a request to the backend.
+// Receive userData and make a request to the backend.
+export const signUp = userData => {
     return dispatch => {
         dispatch(loading()) // call loading
         axios.post('', {
@@ -46,7 +50,9 @@ export const signUp = userData => { // Receive userData and make a request to th
                 }
             `
         }).then(res => res.data.errors ?
-            dispatch(requestFail(res.data.errors[0].message)) : // If there's an error, call requestFail and send error data.
-            dispatch(authSuccess(res.data.data.signUp))) // If we succeed, call authSuccess and send the userData.
+            // If there's an error, call requestFail and send error data.
+            dispatch(requestFail(res.data.errors[0].message)) :
+            // If we succeed, call authSuccess and send the userData.
+            dispatch(authSuccess(res.data.data.signUp)))
     }
 }
