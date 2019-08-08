@@ -15,8 +15,7 @@ const Home = ({ state, dispatch }) => {
         dispatch(actionCreators.signUp(userData)) // call the actionCreator signUp and pass what will be formData with user input.
     }
 
-    useEffect(() => {
-        // Just a to test the request.
+    useEffect(() => { // Just a to test the request.
         // onSignUp()
     }, [])
 
