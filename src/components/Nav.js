@@ -52,10 +52,10 @@ export default Navigation
 const LoggedMenu = ({ handleLogout }) => (
     <>
         <NavItem>
-            <NavLink to="/dashboard" className="nav-link">Dashboard</NavLink>
+            <NavLink to="/" className="nav-link">Dashboard</NavLink>
         </NavItem>
         <NavItem>
-            <Link to="/" className="nav-link" onClick={() => handleLogout()}>Log Out</Link>
+            <Link to="#" className="nav-link" onClick={() => handleLogout()}>Log Out</Link>
         </NavItem>
     </>
 )
@@ -63,7 +63,7 @@ const LoggedMenu = ({ handleLogout }) => (
 const NotLoggedMenu = ({ tempLogin }) => (
     <>
         <NavItem>
-            <NavLink to="/dashboard" className="nav-link" onClick={() => tempLogin()}>Log In</NavLink>
+            <NavLink to="/" className="nav-link" onClick={() => tempLogin()}>Log In</NavLink>
         </NavItem>
     </>
 )
