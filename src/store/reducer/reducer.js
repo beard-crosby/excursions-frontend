@@ -28,8 +28,7 @@ const authSuccess = userData => {
     }
 }
 
-// ...state always before we do anything. Never mutate the state directly.
-// Thanks to our helper function we only need to pass state and an object of all that we want to change.
+// Our helper function "updateState()" inherently copies state and allows us to use a function as the 2nd argument. This passed function MUST return an object.
 // action references the keys of the properties in our actionCreators.
 const reducer = (state = initialState, action) => {
     switch (action.type) {
