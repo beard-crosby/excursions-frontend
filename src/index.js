@@ -12,7 +12,7 @@ import { BrowserRouter } from 'react-router-dom'
 import reducer from './store/reducer/reducer'
 
 // All axios requests are appended with this URL.
-axios.defaults.baseURL = 'http://localhost:3001/graphql'
+axios.defaults.baseURL = `${process.env.REACT_APP_BASE_API_ROUTE}/graphql`
 
 // Redux Middleware.
 let actionLogger = store => {
