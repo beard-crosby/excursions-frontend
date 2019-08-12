@@ -1,40 +1,34 @@
-import React, { useState, useEffect } from "react"
-import axios from "axios"
+import React, { useEffect } from "react"
+import { connect } from "react-redux"
+import Spinner from "../components/UI/Spinner/Spinner"
+import * as actionCreators from "../store/actions/actionCreators"
+import Layout from '../components/Layout'
 
-const Home = () => {
-    const [isLoading, setLoading] = useState(false)
-    const [data, setData] = useState({})
+const Home = ({ state, dispatch }) => {
+    const onSignUp = event => {
+        //event.preventDefault()
+        const userData = {
+            email: "test@wsteswtness.com",
+            userName: "testsww1234",
+            fullName: "test testy",
+            password: "tesiness123",
+        }
+        dispatch(actionCreators.signUp(userData)) // call the actionCreator signUp and pass what will be formData with user input.
+    }
 
-    useEffect(() => {
-        setLoading(true)
-        axios
-            .post(`${process.env.REACT_APP_BASE_API_ROUTE}/graphql`, {
-                query: `
-                mutation {
-                    sign_up(userInput: {password: "asnrg34", userName: "mamamamfjfjfj"}) {
-                    userName
-                    token
-                    tokenExpiry
-                }
-            }
-            `,
-            })
-            .then(res => {
-                console.log(res)
-                return res.data.data.sign_up
-            })
-            .then(json => {
-                setData(json)
-                console.log(json.token)
-            })
-            setLoading(false)
+    useEffect(() => { // Just a to test the request.
+        // onSignUp() // Uncomment me and refresh to make a request
     }, [])
 
-    return isLoading ? <p>Loading</p> : (
-        <>
-        <p>{data.userName}</p>
-        </>
+    return (
+        <Layout>
+            {state.loading ? <Spinner /> : <p>HOMEPAGE</p>}
+        </Layout>
     )
 }
 
-export default Home
+export default connect(state => ({
+    state: {
+        loading: state.loading,
+    },
+}))(Home)
