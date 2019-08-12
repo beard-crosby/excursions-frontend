@@ -5,9 +5,8 @@ import * as actionCreators from "../store/actions/actionCreators"
 import { withRouter } from 'react-router-dom'
 import Layout from '../components/Layout'
 import Spinner from "../components/UI/Spinner"
-import Form from '../components/UI/Form'
 import Input from '../components/UI/Input'
-import Button from '../components/UI/Button'
+import { Form, Button } from 'reactstrap'
 
 const Home = ({ state, dispatch, location }) => {
     const onSignUp = event => {
@@ -24,7 +23,7 @@ const Home = ({ state, dispatch, location }) => {
     return (
         <Layout>
             {state.loading ? <Spinner /> : 
-                <Form submit={event => onSignUp(event)}>
+                <Form className="form" onSubmit={event => onSignUp(event)}>
                     {Object.entries(state.signUpForm).map(input => <Input 
                         key={input[0]}
                         elementType={input[1].elementType}
@@ -38,7 +37,7 @@ const Home = ({ state, dispatch, location }) => {
                         value={input[1].value}
                         changed={event => dispatch(actionCreators.inputChange(event, input[0], location.pathname))} />)}
                     <div className="singleFormBtn">
-                        <Button variant="outlined" type="submit" disabled={!state.signUpFormValidity}>Sign Up</Button>
+                        <Button outline color="primary" type="submit" disabled={!state.signUpFormValidity}>Sign Up</Button>
                     </div>
                 </Form>}
         </Layout>

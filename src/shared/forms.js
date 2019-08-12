@@ -1,6 +1,6 @@
 export const authForm = {
   email: {
-    elementType: "input",
+    elementType: "email",
     name: "Email",
     invalidName: "Please enter a valid Email.",
     placeholder: "Your Email",
@@ -33,7 +33,7 @@ export const authForm = {
 
 export const signUpForm = {
   email: {
-    elementType: "input",
+    elementType: "email",
     name: "Email",
     invalidName: "Please enter a valid Email.",
     placeholder: "Your Email",

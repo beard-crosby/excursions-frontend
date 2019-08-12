@@ -1,35 +1,10 @@
 import React from "react"
 import * as classes from "./Input.module.scss"
+import { FormGroup, Label, Input } from 'reactstrap';
 import PropTypes from 'prop-types'
-import { withStyles } from "@material-ui/core/styles"
-import TextField from "@material-ui/core/TextField"
 
-const TextFieldWithSyles = withStyles({
-    root: {
-        '& label.Mui-focused': {
-            color: '#111111',
-        },
-        '& .MuiInput-underline': {
-            '&:after': {
-                borderBottomColor: '#111111'
-            }
-        },
-        '& .MuiOutlinedInput-root': {
-            '& fieldset': {
-                borderColor: '#111111',
-            },
-            '&:hover fieldset': {
-                borderColor: '#111111',
-            },
-            '&.Mui-focused fieldset': {
-                borderColor: '#111111',
-            },
-        },
-    },
-})(TextField);
-
-const Input = props => {
-    const inputClasses = [classes.Input]
+const InputSwitch = props => {
+    const inputClasses = []
     if (props.invalid && props.validation && props.touched && props.focusChanged) {
         inputClasses.push(classes.Invalid)
     }
@@ -41,36 +16,61 @@ const Input = props => {
 
     let inputElement = null
     switch (props.elementType) {
-        case 'input':
-            inputElement = <TextFieldWithSyles
-                label={label}
-                placeholder={props.placeholder}
-                className={inputClasses.join(' ')}
-                value={props.value}
-                onChange={props.changed}
-                margin='normal' />
+        case 'input': 
+            inputElement = 
+            <FormGroup>
+                <Label for={props.name} className={inputClasses.join(' ')}>{label}</Label>
+                <Input 
+                    type="input" 
+                    name="input" 
+                    id={props.name}
+                    className={inputClasses.join(' ')}
+                    placeholder={props.placeholder} 
+                    value={props.value} 
+                    onChange={props.changed} />
+            </FormGroup>
+            break
+        case 'email':
+            inputElement =
+            <FormGroup>
+                <Label for={props.name} className={inputClasses.join(' ')}>{label}</Label>
+                <Input 
+                    type="email" 
+                    name="email" 
+                    id={props.name} 
+                    className={inputClasses.join(' ')}
+                    placeholder={props.placeholder} 
+                    value={props.value} 
+                    onChange={props.changed}/>
+            </FormGroup>
             break
         case 'password':
-            inputElement = <TextFieldWithSyles
-                label={label}
-                type='password'
-                placeholder={props.placeholder}
-                className={inputClasses.join(' ')}
-                value={props.value}
-                onChange={props.changed}
-                margin='normal' />
+            inputElement = 
+            <FormGroup>
+                <Label for={props.name} className={inputClasses.join(' ')}>{label}</Label>
+                <Input 
+                    type="password" 
+                    name="password" 
+                    id={props.name} 
+                    className={inputClasses.join(' ')}
+                    placeholder={props.placeholder} 
+                    value={props.value} 
+                    onChange={props.changed}/>
+            </FormGroup>
             break
         case 'textarea':
-            inputElement = <TextFieldWithSyles
-                label={label}
-                placeholder={props.placeholder}
-                className={inputClasses.join(' ')}
-                value={props.value}
-                onChange={props.changed}
-                multiline
-                rows='4'
-                margin='normal'
-                variant='outlined' />
+            inputElement = 
+            <FormGroup>
+                <Label for={props.name}>{label}</Label>
+                <Input 
+                    type="textarea" 
+                    name="textarea" 
+                    id={props.name}
+                    className={inputClasses.join(' ')}
+                    placeholder={props.placeholder} 
+                    value={props.value} 
+                    onChange={props.changed}/>
+            </FormGroup>
             break
         case 'file':
             inputElement =
@@ -89,19 +89,25 @@ const Input = props => {
                 </div>
             break
         default:
-            inputElement = <TextFieldWithSyles
-                placeholder={props.placeholder}
-                label={label}
-                className={inputClasses.join(' ')}
-                value={props.value}
-                onChange={props.changed}
-                margin='normal' />
+            inputElement = 
+            <FormGroup>
+                <Label for={props.name} className={inputClasses.join(' ')}>{label}</Label>
+                <Input 
+                    type="input" 
+                    name="input" 
+                    id={props.name}
+                    className={inputClasses.join(' ')}
+                    placeholder={props.placeholder} 
+                    value={props.value} 
+                    onChange={props.changed}/>
+            </FormGroup>
     }
     return inputElement
 }
 
 Input.propTypes = {
-    elementType: PropTypes.string.isRequired,
+    elementType: PropTypes.string,
+    key: PropTypes.string,
     name: PropTypes.string,
     placeholder: PropTypes.string,
     invalid: PropTypes.bool,
@@ -114,4 +120,4 @@ Input.propTypes = {
     changed: PropTypes.func
 }
 
-export default Input
+export default InputSwitch

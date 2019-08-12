@@ -45,9 +45,14 @@ body {
         }
     }
 
-    .singleFormBtn {
-        text-align: right;
-        margin-top: 20px;
+    .form {
+        max-width: 300px;
+        min-height: 100px;
+
+        .singleFormBtn {
+            text-align: right;
+            margin-top: 20px;
+        }
     }
 }
 
