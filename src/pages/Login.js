@@ -2,7 +2,7 @@ import React from "react"
 import '../scss/base.scss'
 import { connect } from "react-redux"
 import * as actionCreators from "../store/actions/actionCreators"
-import { withRouter } from 'react-router-dom'
+import { withRouter, Redirect } from 'react-router-dom'
 import Layout from '../components/Layout'
 import Spinner from "../components/UI/Spinner"
 import Input from '../components/UI/Input'
@@ -20,6 +20,7 @@ const Home = ({ state, dispatch, location }) => {
 
     return (
         <Layout>
+            {state.token && <Redirect to="/"/>}
             {state.loading ? <Spinner /> : 
                 <Form className="form" onSubmit={event => onLogin(event)}>
                     {Object.entries(state.loginForm).map(input => <Input 
@@ -46,6 +47,7 @@ export default connect(state => ({
     state: {
         loading: state.loading,
         loginForm: state.loginForm,
-        loginFormValidity: state.loginFormValidity
+        loginFormValidity: state.loginFormValidity,
+        token: state.token
     },
 }))(withRouter(Home))
