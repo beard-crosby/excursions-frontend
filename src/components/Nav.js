@@ -29,7 +29,7 @@ const Navigation = ({ state, dispatch }) => {
                         </>
                     ) : (
                         <NavLink to="/login" className="nav-link">
-                            Log In
+                            Login
                         </NavLink>
                     )}
                 </Nav>

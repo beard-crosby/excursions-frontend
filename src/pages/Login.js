@@ -35,7 +35,7 @@ const Home = ({ state, dispatch, location }) => {
                         value={input[1].value}
                         changed={event => dispatch(actionCreators.inputChange(event, input[0], location.pathname))} />)}
                     <div className="singleFormBtn">
-                        <Button outline color="primary" type="submit" disabled={!state.loginFormValidity}>Sign Up</Button>
+                        <Button outline color="primary" type="submit" disabled={!state.loginFormValidity}>Login</Button>
                     </div>
                 </Form>}
         </Layout>
