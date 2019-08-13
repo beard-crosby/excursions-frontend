@@ -6,6 +6,7 @@ import PrivateRoute from "./components/PrivateRoute"
 import Home from "./pages/Home"
 import Dashboard from "./pages/Dashboard"
 import NotFound from "./pages/error/NotFound"
+import Login from './pages/Login'
 
 const Router = ({ state }) => 
     <Switch>
@@ -14,7 +15,7 @@ const Router = ({ state }) =>
             :
             <Route exact path="/" component={Home} /> 
         }
-        
+        <Route exact path="/login" component={Login}/>
         <Route component={NotFound} />
     </Switch>
 

@@ -1,4 +1,4 @@
-export const authForm = {
+export const loginForm = {
   email: {
     elementType: "email",
     name: "Email",

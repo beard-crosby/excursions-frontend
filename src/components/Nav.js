@@ -28,7 +28,7 @@ const Navigation = ({ state, dispatch }) => {
                             </Link>
                         </>
                     ) : (
-                        <NavLink to="/" className="nav-link">
+                        <NavLink to="/login" className="nav-link">
                             Log In
                         </NavLink>
                     )}

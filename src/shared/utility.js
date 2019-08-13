@@ -76,16 +76,16 @@ const isFormValid = formObj => {
 
 // Depending on what url the user is currently on,
 // mutate the allocated state keys with the functions above.
-export const authForms = (auth, signUp, event, ident, state, url) => {
+export const authForms = (login, signUp, event, ident, state, url) => {
     if (url === '/') {
         return {
             signUpForm: inputChangedHandler(signUp, event, ident, state),
             signUpFormValidity: isFormValid(signUp),
         }
-    } else {
+    } else if ((url === '/login')) {
         return {
-            authForm: inputChangedHandler(auth, event, ident, state),
-            authFormValidity: isFormValid(auth),
+            loginForm: inputChangedHandler(login, event, ident, state),
+            loginFormValidity: isFormValid(login),
         }
     }
 }

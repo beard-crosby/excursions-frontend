@@ -73,3 +73,30 @@ export const signUp = userData => {
             dispatch(authSuccess(res.data.data.signUp)))
     }
 }
+
+export const login = userData => {
+    return dispatch => {
+        dispatch(loading())
+        axios.post('', {
+            variables: {
+                email: userData.email,
+                password: userData.password
+            },
+            query: `
+                query Login($email: String!, $password: String!) {
+                    login(email: $email, password: $password) {
+                        _id
+                        email
+                        userName
+                        fullName
+                        photo
+                        token
+                        tokenExpiry
+                    }
+                }
+            `
+        }).then(res => res.data.errors ?
+            dispatch(requestFail(res.data.errors[0].message)) :
+            dispatch(authSuccess(res.data.data.login)))
+    }
+}
