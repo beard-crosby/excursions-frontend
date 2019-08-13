@@ -44,6 +44,16 @@ body {
             color: "dark";
         }
     }
+
+    .form {
+        max-width: 300px;
+        min-height: 100px;
+
+        .singleFormBtn {
+            text-align: right;
+            margin-top: 20px;
+        }
+    }
 }
 
 @import "~bootstrap/scss/bootstrap";
