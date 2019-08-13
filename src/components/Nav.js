@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import { connect } from "react-redux"
+import * as actionCreators from "../store/actions/actionCreators"
 import { Container, Collapse, Navbar, NavbarToggler, Nav } from "reactstrap"
 import { Link, NavLink } from "react-router-dom"
 
@@ -22,7 +23,7 @@ const Navigation = ({ state, dispatch }) => {
                             <NavLink to="/" className="nav-link">
                                 Dashboard
                             </NavLink>
-                            <Link to="/" className="nav-link">
+                            <Link to="/" className="nav-link" onClick={() => dispatch(actionCreators.logOut())}>
                                 Log Out
                             </Link>
                         </>

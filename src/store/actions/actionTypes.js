@@ -4,7 +4,9 @@
 
 // misc
 export const LOADING = 'LOADING'
+export const INPUT_CHANGE = 'INPUT_CHANGE'
 
 // auth
 export const REQUEST_FAIL = 'REQUEST_FAIL'
 export const AUTH_SUCCESS = 'AUTH_SUCCESS'
+export const LOG_OUT = 'LOG_OUT'

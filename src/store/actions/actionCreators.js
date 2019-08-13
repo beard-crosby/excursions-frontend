@@ -8,6 +8,23 @@ const loading = () => {
     } 
 }
 
+// When an input receives user input, take the event, the ident (which input are you),
+// and the current url and pass that information to the reducer.
+export const inputChange = (event, ident, url) => {
+    return {
+        type: actionTypes.INPUT_CHANGE,
+        event: event,
+        ident: ident,
+        url: url
+    }
+}
+
+export const logOut = () => {
+    return {
+        type: actionTypes.LOG_OUT
+    }
+}
+
 // If signUp fails send REQUEST_FAIL with error to the reducer.
 const requestFail = err => {
     return {
