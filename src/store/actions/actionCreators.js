@@ -19,6 +19,12 @@ export const inputChange = (event, ident, url) => {
     }
 }
 
+export const logOut = () => {
+    return {
+        type: actionTypes.LOG_OUT
+    }
+}
+
 // If signUp fails send REQUEST_FAIL with error to the reducer.
 const requestFail = err => {
     return {
