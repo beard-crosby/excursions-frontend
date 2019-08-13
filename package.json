@@ -23,7 +23,7 @@
     "format": "prettier --write src/**/*.{js,jsx}",
     "cy:open": "cypress open",
     "cy:run": "cypress run",
-    "test": "start-server-and-test start http://excursions.test/ cy:run"
+    "test": "start-server-and-test start http://localhost:3000 cy:run"
   },
   "eslintConfig": {
     "extends": "react-app"
