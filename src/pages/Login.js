@@ -20,7 +20,6 @@ const Home = ({ state, dispatch, location }) => {
 
     return (
         <Layout>
-            {state.token && <Redirect to="/"/>}
             {state.loading ? <Spinner /> : 
                 <Form className="form" onSubmit={event => onLogin(event)}>
                     {Object.entries(state.loginForm).map(input => <Input 
@@ -47,7 +46,6 @@ export default connect(state => ({
     state: {
         loading: state.loading,
         loginForm: state.loginForm,
-        loginFormValidity: state.loginFormValidity,
-        token: state.token
+        loginFormValidity: state.loginFormValidity
     },
 }))(withRouter(Home))
