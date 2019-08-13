@@ -5,7 +5,7 @@ import Spinner from "../components/UI/Spinner/Spinner"
 
 const Dashboard = ({ state, dispatch }) => {
     return (
-        <Layout >
+        <Layout>
             {state.loading ? <Spinner /> : <h1>Dashboard</h1>}
         </Layout>
     )
