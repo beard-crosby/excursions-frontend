@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat:400,600,700");
 
 // Colours
-$color-1: #464647;
+$color-1: #379e22;
 $color-2: #096625;
 $black: #333333;
 $white: #f1f1f1;
@@ -15,7 +15,6 @@ $theme-colors: (
 );
 
 $enable-border-radius: false;
-$spacer: 1.8em;
 
 body {
     min-height: 100vh;
@@ -42,16 +41,6 @@ body {
         &:hover,
         &:active {
             color: "dark";
-        }
-    }
-
-    .form {
-        max-width: 300px;
-        min-height: 100px;
-
-        .singleFormBtn {
-            text-align: right;
-            margin-top: 20px;
         }
     }
 }
