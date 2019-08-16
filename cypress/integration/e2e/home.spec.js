@@ -4,4 +4,15 @@ context("Home Page", () => {
             cy.visit("/")
         })
     })
+
+    describe("The signup form", ()=> {
+        it("displays error when invalid email in typed", () => {
+            cy.get('#email').type('notanemailaddress')
+            cy.get('#username').type('validusername')
+            // cy.get('label.Input_Invalid__3aeyU').contains('Please enter a valid Email.')
+            cy.get('#submit-signup').should('be.disabled')
+            cy.get('#full-name').should('exist').type('John Doe')
+            cy.get('#password').type('password')
+        })
+    })
 })

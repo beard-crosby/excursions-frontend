@@ -96,6 +96,7 @@ const Home = ({ state, dispatch, location }) => {
                                                 <Row>
                                                     <Col className="text-right">
                                                         <Button
+                                                            id="submit-signup"
                                                             color="primary"
                                                             type="submit"
                                                             disabled={
