@@ -1,11 +1,11 @@
-import React from 'react'
+import React from "react"
 import PropTypes from "prop-types"
 import { Container, Row, Col } from "reactstrap"
 import Sidebar from "../Sidebar"
 
 const Layout = ({ sidebar, fluid, children }) => {
     return sidebar ? (
-        <Container fluid={fluid}>
+        <Container fluid={fluid} style={{ flexGrow: 1 }} className="mt-3">
             <Row>
                 <Col md="3" lg="2" className="sidebar py-3">
                     <Sidebar />
@@ -16,7 +16,7 @@ const Layout = ({ sidebar, fluid, children }) => {
             </Row>
         </Container>
     ) : (
-        <Container fluid={fluid}>
+        <Container fluid={fluid} style={{ flexGrow: 1 }} className="mt-3">
             {children}
         </Container>
     )
