@@ -1,10 +1,12 @@
-import React from "react"
-import { connect } from "react-redux"
+import React, { useContext } from "react"
 import PropTypes from "prop-types"
 import { Route, Redirect } from "react-router-dom"
+import { UserContext } from '../App'
 
 const PrivateRoute = props => {
-    if (props.state.token) {
+    const { isLogged } = useContext(UserContext)
+
+    if (isLogged) {
         return <Route {...props} />
     } else {
         return <Redirect to="/login" />
@@ -17,15 +19,11 @@ PrivateRoute.propTypes = {
     /** Passed for react-router-dom */
     path: PropTypes.string.isRequired,
     /** Component that the route links to. Passed for react-router-dom */
-    component: PropTypes.object,
+    // component: PropTypes,
 }
 
 PrivateRoute.defaultProps = {
     exact: true,
 }
 
-export default connect(state => ({
-    state: {
-        token: state.token,
-    },
-}))(PrivateRoute)
+export default PrivateRoute

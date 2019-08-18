@@ -1,12 +1,20 @@
-import React, { useState } from "react"
-import { connect } from "react-redux"
+import React, { useState, useContext } from "react"
 import * as actionCreators from "../store/actions/actionCreators"
 import { Container, Collapse, Navbar, NavbarToggler, Nav } from "reactstrap"
 import { Link, NavLink } from "react-router-dom"
+import { UserContext } from '../App'
 
-const Navigation = ({ state, dispatch }) => {
+const Navigation = () => {
+    const { isLogged, updateLogged } = useContext(UserContext)
+
     const [isOpen, setOpen] = useState(false)
+
     const toggleOpen = () => setOpen(!isOpen)
+
+    const handleLogout = () => {
+        localStorage.removeItem('token')
+        updateLogged()
+    }
 
     return (
     <>
@@ -18,12 +26,12 @@ const Navigation = ({ state, dispatch }) => {
                 <NavbarToggler onClick={toggleOpen} />
                 <Collapse isOpen={isOpen} navbar>
                 <Nav className="ml-auto" navbar>
-                    {state.token ? (
+                    {isLogged ? (
                         <>
                             <NavLink to="/" className="nav-link">
                                 Dashboard
                             </NavLink>
-                            <Link to="/" className="nav-link" onClick={() => dispatch(actionCreators.logOut())}>
+                            <Link to="/" className="nav-link" onClick={() => handleLogout()}>
                                 Log Out
                             </Link>
                         </>
@@ -40,8 +48,4 @@ const Navigation = ({ state, dispatch }) => {
     )
 }
 
-export default connect(state => ({
-    state: {
-        token: state.token,
-    },
-}))(Navigation)
+export default Navigation
