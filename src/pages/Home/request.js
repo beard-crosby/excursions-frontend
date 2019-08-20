@@ -1,22 +1,26 @@
-import axios from 'axios'
+import axios from "axios"
 
-const request = (email, password) => {
-    axios.post(process.env.REACT_APP_API_ROUTE, {
-        variables: {
-            email: email,
-            password: password
-        },
-        query: `
-            query Login($email: String!, $password: String!) {
-                login(email: $email, password: $password) {
+const request = form => {
+    axios
+        .post(process.env.REACT_APP_BASE_API_ROUTE, {
+            query: `
+            mutation {
+                createUser(userInput: {email: ${form.email}, username: ${form.username}, name: ${form.name}, password: ${form.password}, confirm: ${form.confirmPassword}}) {
+                    _id
+                    email
                     token
-                    tokenExpiry
                 }
             }
-        `
-    })
-    .then(res => res.data.errors ? 'error' : res
-    )
+        `,
+        })
+        .then(res => {
+            if (res.data.errors) {
+                console.log(res.data.errors)
+            } else {
+                console.log(res.data)
+                return res.data.data.createUser
+            }
+        })
 }
 
 export default request

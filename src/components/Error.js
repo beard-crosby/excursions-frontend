@@ -1,31 +1,27 @@
-import React from "react"
+import React, { useState } from "react"
 import PropTypes from "prop-types"
-import Layout from "../Layout"
+import { Alert } from 'reactstrap'
 
-const Error = ({ sidebar, message }) => {
+const Error = ({ children }) => {
+    const [isOpen, setOpen] = useState(true)
+
     return (
-        <Layout sidebar={sidebar}>
-            <div
-                style={{ height: "100%", flexDirection: "column" }}
-                className="d-flex justify-content-center align-items-center"
-            >
-                <h1 className="text-danger">An Error Occurred</h1>
-                <h2>{message}</h2>
-            </div>
-        </Layout>
+        <Alert color="danger" isOpen={isOpen} toggle={() => {setOpen(false)}}>
+            {children}
+        </Alert>
     )
 }
 
 Error.propTypes = {
-    /** Boolean that decides if the sidebar will be present along with the error message. */
-    sidebar: PropTypes.bool,
     /** The message that is returned from the API response error. */
     message: PropTypes.string,
 }
 
 Error.defaultProps = {
-    sidebar: false,
     message: "An error has occurred.",
 }
 
 export default Error
+
+// TO DO
+// This component doesn't unmount when it is closed. What other way can we do this?

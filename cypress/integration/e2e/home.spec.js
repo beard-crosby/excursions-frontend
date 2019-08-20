@@ -61,23 +61,22 @@ context("Home Page", () => {
 
     describe("The signup form", () => {
         it("displays error when invalid email in typed", () => {
-            cy.get("#submit-signup").should("be.disabled")
 
             // Test valid email addresses.
             validEmailAddresses.forEach(e => {
-                cy.get("#email").clear()
+                cy.get('input[name="email"]').clear()
                 cy.get('label[for="email"]').contains("Email")
-                cy.get("#email").type(e)
+                cy.get('input[name="email"]').type(e)
                 cy.get('label[for="email"]').contains("Email")
             })
 
             // Test invalid email addresses
             invalidEmailAddresses.forEach(e => {
-                cy.get("#email").clear()
+                cy.get('input[name="email"]').clear()
                 cy.get('label[for="email"]').contains("Email")
-                cy.get("#email").type(e)
+                cy.get('input[name="email"]').type(e)
                 cy.get('label[for="email"]').contains(
-                    "Please enter a valid Email."
+                    "Please enter a valid email address."
                 )
             })
 
@@ -92,10 +91,11 @@ context("Home Page", () => {
             invalidUsernames.forEach(u => {
                 cy.get('label[for="username"]').contains("Username")
                 cy.get("#username").type(u)
-                cy.get('label[for="username"]').contains("Please enter a valid Username.")
+                cy.get('label[for="username"]').contains(
+                    "Please enter a valid Username."
+                )
             })
 
-            
             cy.get("#full-name")
                 .should("exist")
                 .type("John Doe")

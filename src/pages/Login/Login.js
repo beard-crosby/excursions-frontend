@@ -13,9 +13,11 @@ import {
 } from "reactstrap"
 import { UserContext } from "../../App"
 import axios from "axios"
+import Error from '../../components/Error'
 
 const Login = () => {
     const { updateLogged } = useContext(UserContext)
+    const [error, setError] = useState()
     const [form, setForm] = useState({
         email: "",
         password: "",
@@ -41,14 +43,19 @@ const Login = () => {
                 `,
             })
             .then(res => {
-                return res.data.data.login
+                // console.log(res)
+                if (res.data.errors) {
+                    console.log(res.data.errors)
+                    setError(res.data.errors)
+                } else {
+                    return res.data.data.login
+                }
             })
             .then(obj => {
                 localStorage.setItem("token", obj.token)
                 updateLogged()
-                setForm({ email: '', password: ''})
+                setForm({ email: "", password: "" })
             })
-
     }
 
     // if (isLogged) {
@@ -60,6 +67,11 @@ const Login = () => {
         <Layout>
             <Row className="justify-content-center mt-5">
                 <Col md="4">
+                    {error ? (
+                        error.map((e, i) => (
+                            <Error key={i}>{e.message}</Error>
+                    ))
+                    ) : null}
                     <Card
                         style={{
                             background: "white",

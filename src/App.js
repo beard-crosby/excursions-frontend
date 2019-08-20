@@ -16,6 +16,10 @@ const App = props => {
         setIsLogged(!!localStorage.getItem("token"))
     }
 
+    const updateUser = (u) => {
+        setUser(u)
+    }
+
     useEffect(() => {
         if (isLogged) {
             setLoading(true)
@@ -53,7 +57,7 @@ const App = props => {
     }, [isLogged])
 
     return  (
-        <UserContext.Provider value={{ isLoading, user, setUser, isLogged, updateLogged }}>
+        <UserContext.Provider value={{ isLoading, user, updateUser, isLogged, updateLogged }}>
             <Nav />
             <Router />
             <Footer />
