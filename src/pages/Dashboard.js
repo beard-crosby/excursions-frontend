@@ -1,12 +1,12 @@
 import React, { useContext } from "react"
 import Layout from '../components/Layout'
-import Spinner from "../components/UI/Spinner/Spinner"
 import { UserContext  } from '../App'
+import Spinner from '../components/UI/Spinner'
 
 const Dashboard = () => {
-    const { user } = useContext(UserContext)
+    const { user, isLoading } = useContext(UserContext)
 
-    return (
+    return isLoading ? <Spinner /> : (
         <Layout>
             <h1>Dashboard</h1>
             <h2>{user.name}</h2>

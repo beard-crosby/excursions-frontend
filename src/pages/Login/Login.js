@@ -1,8 +1,5 @@
 import React, { useState, useContext } from "react"
-// import "../scss/base.scss"
-import { withRouter, Redirect } from "react-router-dom"
 import Layout from "../../components/Layout"
-import Spinner from "../../components/UI/Spinner"
 import {
     Row,
     Col,
@@ -14,13 +11,11 @@ import {
     Card,
     CardBody,
 } from "reactstrap"
-import request from "./request"
 import { UserContext } from "../../App"
 import axios from "axios"
 
 const Login = () => {
-    const { user, setUser, isLogged, updateLogged } = useContext(UserContext)
-    const [data, setData] = useState({})
+    const { updateLogged } = useContext(UserContext)
     const [form, setForm] = useState({
         email: "",
         password: "",
@@ -34,14 +29,9 @@ const Login = () => {
     }
 
     const handleRequest = e => {
-        console.log(`API_ROUTE: ${process.env.REACT_APP_BASE_API_ROUTE}`)
         e.preventDefault()
         axios
             .post(process.env.REACT_APP_BASE_API_ROUTE, {
-                variables: {
-                    email: form.email,
-                    password: form.password,
-                },
                 query: `
                     query {
                         login(email: "${form.email}", password: "${form.password}") {
@@ -51,11 +41,9 @@ const Login = () => {
                 `,
             })
             .then(res => {
-                console.log(res.data.data.login)
                 return res.data.data.login
             })
             .then(obj => {
-                console.log(obj)
                 localStorage.setItem("token", obj.token)
                 updateLogged()
                 setForm({ email: '', password: ''})

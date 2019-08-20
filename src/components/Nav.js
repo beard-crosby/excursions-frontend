@@ -1,5 +1,4 @@
 import React, { useState, useContext } from "react"
-import * as actionCreators from "../store/actions/actionCreators"
 import { Container, Collapse, Navbar, NavbarToggler, Nav } from "reactstrap"
 import { Link, NavLink } from "react-router-dom"
 import { UserContext } from '../App'

@@ -1,9 +1,5 @@
 import React, { useState } from "react"
-// import "../scss/base.scss"
-// import * as actionCreators from "../store/actions/actionCreators"
-// import { withRouter } from "react-router-dom"
 import Layout from "../../components/Layout"
-import Spinner from "../../components/UI/Spinner"
 import {
     Row,
     Col,
