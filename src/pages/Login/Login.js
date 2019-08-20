@@ -19,7 +19,7 @@ import { UserContext } from "../../App"
 import axios from "axios"
 
 const Login = () => {
-    const { isLogged, updateLogged } = useContext(UserContext)
+    const { user, setUser, isLogged, updateLogged } = useContext(UserContext)
     const [data, setData] = useState({})
     const [form, setForm] = useState({
         email: "",
@@ -43,10 +43,9 @@ const Login = () => {
                     password: form.password,
                 },
                 query: `
-                    query Login($email: String!, $password: String!) {
-                        login(email: $email, password: $password) {
+                    query {
+                        login(email: "${form.email}", password: "${form.password}") {
                             token
-                            tokenExpiry
                         }
                     }
                 `,

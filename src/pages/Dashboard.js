@@ -9,7 +9,7 @@ const Dashboard = () => {
     return (
         <Layout>
             <h1>Dashboard</h1>
-            <h2>{user.userName}</h2>
+            <h2>{user.name}</h2>
         </Layout>
     )
 }

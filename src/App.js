@@ -3,6 +3,7 @@ import Router from './Router'
 import Nav from './components/Nav'
 import Footer from './components/Footer'
 import axios from 'axios';
+import jwt from 'jsonwebtoken'
 
 const UserContext = React.createContext()
 
@@ -15,24 +16,40 @@ const App = props => {
         setIsLogged(!!localStorage.getItem('token'))
     }
 
+    const getUserId = () => {
+        if (isLogged) {
+            const token = localStorage.getItem('token')
+            const decode = jwt.decode(token)
+            return decode.id
+        }
+    }
+
     useEffect(() => {
+        getUserId()
         console.log("Fetching User Data")
         if (isLogged) {
             setLoading(true)
             axios.post(process.env.REACT_APP_BASE_API_ROUTE, {
                 variables: {
+                    id: getUserId(),
                     token: localStorage.getItem('token')
                 },
                 query: `
-                    query UserData($token: String!) {
-                        token(token: $token) {
+                    query {
+                        getUser(_id: "${getUserId()}", token: "${localStorage.getItem('token')}") {
                             username
+                            name
+                            email
                         }
                     }
                 `
-            }).then(res => res.data.errors ? 'error' : res)
+            })
+            .then(res => {
+                console.log(res)
+                return res.data.errors ? 'error' : res.data.data.getUser
+            })
             .then(json => {
-                setUser(JSON.parse(json))
+                setUser(json)
                 setLoading(false)
             })
         } else {
@@ -41,7 +58,7 @@ const App = props => {
     }, [isLogged])
 
     return (
-    <UserContext.Provider value={{ user, isLogged, updateLogged }}>
+    <UserContext.Provider value={{ user, setUser, isLogged, updateLogged }}>
         <Nav />
         <Router />
         <Footer />
