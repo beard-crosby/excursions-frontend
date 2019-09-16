@@ -1,4 +1,4 @@
-import validator from 'validator'
+import validator from "validator"
 
 export function isEmail(val) {
     return validator.isEmail(val)

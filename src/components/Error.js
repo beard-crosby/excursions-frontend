@@ -1,12 +1,18 @@
 import React, { useState } from "react"
 import PropTypes from "prop-types"
-import { Alert } from 'reactstrap'
+import { Alert } from "reactstrap"
 
 const Error = ({ children }) => {
     const [isOpen, setOpen] = useState(true)
 
     return (
-        <Alert color="danger" isOpen={isOpen} toggle={() => {setOpen(false)}}>
+        <Alert
+            color="danger"
+            isOpen={isOpen}
+            toggle={() => {
+                setOpen(false)
+            }}
+        >
             {children}
         </Alert>
     )

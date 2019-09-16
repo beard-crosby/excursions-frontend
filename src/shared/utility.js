@@ -15,11 +15,14 @@ export const headers = token => {
 }
 
 // Take in the validation object of the form[ident] and depending on the type of validation required
-// use regex to validate that input. 
+// use regex to validate that input.
 const isValid = (val, rules, event) => {
     let valid = true
     if (rules.emailRequired) {
-        valid = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(event) && valid // eslint-disable-line no-useless-escape
+        valid =
+            /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
+                event
+            ) && valid // eslint-disable-line no-useless-escape
     }
     if (rules.userNameRequired) {
         valid = /^[a-z0-9_-]{6,12}$/gim.test(event) && valid // eslint-disable-line no-useless-escape
@@ -34,13 +37,17 @@ const isValid = (val, rules, event) => {
 }
 
 // Take in the entire form object, with ident find the particular input we're altering.
-// Depending on user input, mutate the values of the input object accordingly. 
+// Depending on user input, mutate the values of the input object accordingly.
 const inputArr = ["zero", "one"]
 const inputChangedHandler = (formObj, event, ident, state) => {
     const form = { ...formObj }
     event.persist()
     form[ident].value = event.target.value
-    form[ident].valid = isValid(form[ident].value, form[ident].validation, event.target.value)
+    form[ident].valid = isValid(
+        form[ident].value,
+        form[ident].validation,
+        event.target.value
+    )
     form[ident].touched = true
     // Check if the user has moved on to another input.
     if (inputArr[0] !== form[ident].name) {
@@ -77,12 +84,12 @@ const isFormValid = formObj => {
 // Depending on what url the user is currently on,
 // mutate the allocated state keys with the functions above.
 export const authForms = (login, signUp, event, ident, state, url) => {
-    if (url === '/') {
+    if (url === "/") {
         return {
             signUpForm: inputChangedHandler(signUp, event, ident, state),
             signUpFormValidity: isFormValid(signUp),
         }
-    } else if ((url === '/login')) {
+    } else if (url === "/login") {
         return {
             loginForm: inputChangedHandler(login, event, ident, state),
             loginFormValidity: isFormValid(login),
