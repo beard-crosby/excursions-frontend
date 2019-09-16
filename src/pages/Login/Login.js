@@ -34,9 +34,13 @@ const Login = () => {
         e.preventDefault()
         axios
             .post(process.env.REACT_APP_BASE_API_ROUTE, {
+                variables: {
+                    email: form.email,
+                    password: form.password
+                },
                 query: `
                     query {
-                        login(email: "${form.email}", password: "${form.password}") {
+                        login(email: $email, password: $password) {
                             token
                         }
                     }
@@ -57,11 +61,6 @@ const Login = () => {
                 setForm({ email: "", password: "" })
             })
     }
-
-    // if (isLogged) {
-    //     updateLogged()
-    //     return <Redirect to="/" />
-    // }
 
     return (
         <Layout>

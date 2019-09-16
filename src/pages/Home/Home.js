@@ -11,7 +11,6 @@ import {
     Label,
     Input,
 } from "reactstrap"
-// import request from "./request"
 import axios from "axios"
 import { UserContext } from '../../App';
 
@@ -38,9 +37,16 @@ const Home = () => {
         console.log('SUBMITTING HOME FORM')
         axios
         .post(process.env.REACT_APP_BASE_API_ROUTE, {
+            variables: {
+                email: form.email,
+                username: form.username,
+                name: form.name,
+                password: form.password,
+                confirm: form.confirm
+            },
             query: `
             mutation {
-                createUser(userInput: {email: "${form.email}", username: "${form.username}", name: "${form.name}", password: "${form.password}", confirm: "${form.confirm}"}) {
+                createUser(userInput: {email: $email, username: $username, name: $name, password: $password, confirm: $confirm}) {
                     _id
                     username
                     name

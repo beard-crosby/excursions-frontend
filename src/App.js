@@ -16,7 +16,7 @@ const App = props => {
         setIsLogged(!!localStorage.getItem("token"))
     }
 
-    const updateUser = (u) => {
+    const updateUser = u => {
         setUser(u)
     }
 
@@ -32,11 +32,13 @@ const App = props => {
 
             axios
                 .post(process.env.REACT_APP_BASE_API_ROUTE, {
+                    variables: {
+                        id: getUserId(),
+                        token: localStorage.getItem("token"),
+                    },
                     query: `
                     query {
-                        getUser(_id: "${getUserId()}", token: "${localStorage.getItem(
-                        "token"
-                    )}") {
+                        getUser(_id: $id, token: $token) {
                             username
                             name
                             email
@@ -56,8 +58,10 @@ const App = props => {
         }
     }, [isLogged])
 
-    return  (
-        <UserContext.Provider value={{ isLoading, user, updateUser, isLogged, updateLogged }}>
+    return (
+        <UserContext.Provider
+            value={{ isLoading, user, updateUser, isLogged, updateLogged }}
+        >
             <Nav />
             <Router />
             <Footer />
