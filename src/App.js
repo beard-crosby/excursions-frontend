@@ -37,7 +37,7 @@ const App = props => {
                         token: localStorage.getItem("token"),
                     },
                     query: `
-                    query {
+                    query ($id: ID!, $token: String!){
                         getUser(_id: $id, token: $token) {
                             username
                             name

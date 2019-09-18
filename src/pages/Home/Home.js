@@ -45,7 +45,7 @@ const Home = () => {
                 confirm: form.confirm
             },
             query: `
-            mutation {
+            mutation ($email: String!, $username: String!, $name: String, $password: String! $confirm: String!){
                 createUser(userInput: {email: $email, username: $username, name: $name, password: $password, confirm: $confirm}) {
                     _id
                     username

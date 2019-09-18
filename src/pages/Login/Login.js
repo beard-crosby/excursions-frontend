@@ -39,7 +39,7 @@ const Login = () => {
                     password: form.password
                 },
                 query: `
-                    query {
+                    query ($email: String!, $password: String!){
                         login(email: $email, password: $password) {
                             token
                         }
