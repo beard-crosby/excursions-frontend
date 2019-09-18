@@ -1,18 +1,19 @@
-import React from "react"
-import { connect } from "react-redux"
-import Layout from '../components/Layout'
-import Spinner from "../components/UI/Spinner/Spinner"
+import React, { useContext } from "react"
+import Layout from "../components/Layout"
+import { UserContext } from "../App"
+import Spinner from "../components/UI/Spinner"
 
-const Dashboard = ({ state, dispatch }) => {
-    return (
+const Dashboard = () => {
+    const { user, isLoading } = useContext(UserContext)
+
+    return isLoading ? (
+        <Spinner />
+    ) : (
         <Layout>
-            {state.loading ? <Spinner /> : <h1>Dashboard</h1>}
+            <h1>Dashboard</h1>
+            <h2>{user.name}</h2>
         </Layout>
     )
 }
 
-export default connect(state => ({
-    state: {
-        loading: state.loading,
-    },
-}))(Dashboard)
+export default Dashboard
